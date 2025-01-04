@@ -1,0 +1,8 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "description": "公用辅助方法和类型定义",
+  "keywords": [],
+  "author": "zono <2742160682@qq.com>",
+  "license": "ISC"
+}

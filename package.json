@@ -2,7 +2,7 @@
 	"name": "big-react",
 	"version": "0.0.0",
 	"repository": "git@github.com:BetaSu/big-react.git",
-	"author": "kasong <313439271@qq.com>",
+	"author": "",
 	"license": "MIT",
 	"scripts": {
 		"build:dev": "rm -rf dist && rollup --config scripts/rollup/dev.config.js",
