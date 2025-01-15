@@ -10,5 +10,5 @@ export interface ReactElement {
 	key: Key;
 	ref: Ref;
 	props: Props;
-	author: string;
+	__author: string;
 }

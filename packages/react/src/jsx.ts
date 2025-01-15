@@ -1,17 +1,16 @@
-import { Key } from './../../../.history/packages/shared/ReactTypes_20250104162455';
 import { REACT_ELEMENT_TYPE } from 'shared/ReactSymbols';
-import { Type, Key, Ref, Props, ReactElement } from 'shared/ReactElementType';
+import { Type, Key, Ref, Props, ReactElement } from 'shared/ReactTypes';
 import { ElementType } from '../../shared/ReactTypes';
 
 /**
  * @des 一个创建 React 元素的工厂方法。它接受多个参数，包括 type、key、ref 和 props，并返回一个表示 React 元素的对象。
- * @param {string} type - React 元素的类型。
+ * @param {Type} type - React 元素的类型。
  * @param {string} key - 用于标识元素的唯一键。
  * @param {string} ref - 元素的引用。
  * @param {object} props - 元素的属性。
  * @returns {object} React 元素对象。
  */
-export const ReactElement = function (
+export const createReactElement = function (
 	type: Type,
 	key: Key,
 	ref: Ref,
@@ -64,7 +63,7 @@ export const jsx = (type: ElementType, config: any, ...children: any) => {
 		props.children = children;
 	}
 
-	return ReactElement(type, key, ref, props);
+	return createReactElement(type, key, ref, props);
 };
 
 export const jsxDEV = jsx; // 实际React包中，实现不同，会有一些代码检测逻辑
