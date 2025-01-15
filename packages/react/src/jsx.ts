@@ -66,4 +66,34 @@ export const jsx = (type: ElementType, config: any, ...children: any) => {
 	return createReactElement(type, key, ref, props);
 };
 
-export const jsxDEV = jsx; // 实际React包中，实现不同，会有一些代码检测逻辑
+export const jsxDEV = (type: ElementType, config: any) => {
+	// 单独处理两个特殊的属性
+	let key: Key = null;
+	const props: Props = {};
+	let ref: Ref = null;
+
+	// 处理 config 对象
+	for (const prop in config) {
+		const value = config[prop]; // 属性值
+		// key 属性
+		if (prop === 'key') {
+			if (value !== undefined) {
+				key = '' + value;
+			}
+			continue;
+		}
+		// ref 属性
+		if (prop === 'ref') {
+			if (value !== undefined) {
+				ref = value;
+			}
+			continue;
+		}
+		// 其他属性,如果是对象的自有属性,则添加到 props 对象中
+		if ({}.hasOwnProperty.call(config, prop)) {
+			props[prop] = value;
+		}
+	}
+
+	return createReactElement(type, key, ref, props);
+};
