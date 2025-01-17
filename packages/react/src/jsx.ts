@@ -1,5 +1,5 @@
 import { REACT_ELEMENT_TYPE } from 'shared/ReactSymbols';
-import { Type, Key, Ref, Props, ReactElement } from 'shared/ReactTypes';
+import { Type, Key, Ref, Props, ReactElementType } from 'shared/ReactTypes';
 import { ElementType } from '../../shared/ReactTypes';
 
 /**
@@ -10,12 +10,12 @@ import { ElementType } from '../../shared/ReactTypes';
  * @param {object} props - 元素的属性。
  * @returns {object} React 元素对象。
  */
-export const createReactElement = function (
+export const ReactElement = function (
 	type: Type,
 	key: Key,
 	ref: Ref,
 	props: Props
-): ReactElement {
+): ReactElementType {
 	const element = {
 		$$typeof: REACT_ELEMENT_TYPE,
 		type,
@@ -63,7 +63,7 @@ export const jsx = (type: ElementType, config: any, ...children: any) => {
 		props.children = children;
 	}
 
-	return createReactElement(type, key, ref, props);
+	return ReactElement(type, key, ref, props);
 };
 
 export const jsxDEV = (type: ElementType, config: any) => {
@@ -95,5 +95,5 @@ export const jsxDEV = (type: ElementType, config: any) => {
 		}
 	}
 
-	return createReactElement(type, key, ref, props);
+	return ReactElement(type, key, ref, props);
 };
